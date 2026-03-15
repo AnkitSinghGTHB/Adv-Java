@@ -1,0 +1,194 @@
+Question Bank Advance java 
+ 
+1.​ Write a Java program to create a user-defined exception named 
+InsufficientBalanceException.​
+The program should read the account balance and withdrawal amount from the user. 
+a)​ If the withdrawal amount is greater than the available balance, throw the custom 
+exception. 
+b)​ Handle the exception properly and display an appropriate message. 
+c)​ Ensure the program continues execution normally after handling the exception. 
+2.​ Write a Java program to create a user-defined exception named 
+InvalidMarksException.​
+The program should read marks from the user. 
+a)​ If the marks entered are less than 0 or greater than 100, throw the custom exception. 
+b)​ Handle the exception and display a suitable error message. 
+c)​ Allow the program to continue execution normally. 
+3.​ Write a Java program to create a user-defined exception named 
+WeakPasswordException.​
+The program should accept a password from the user. 
+a)​ If the password length is less than 8 characters, throw the custom exception. 
+b)​ Handle the exception properly and display a meaningful message. 
+c)​ Continue program execution after handling the exception. 
+4.​ Write a Java program to create a user-defined exception named 
+InvalidTemperatureException.​
+The program should read temperature input from the user. 
+a)​ If the temperature entered is below -50°C or above 60°C, throw the custom exception. 
+b)​ Handle the exception and display an appropriate message. 
+c)​ Ensure the program continues execution normally. 
+ 
+5.​ Write a Java program to create a user-defined exception named 
+InvalidPriceException.​
+The program should read the product price from the user. 
+a)​ If the price entered is less than or equal to zero, throw the custom exception. 
+b)​ Handle the exception properly with a meaningful error message. 
+c)​ Ensure the program continues execution normally after handling the exception. 
+6.​ Create a class named Employee with data members empId, empName, and salary. 
+
+a)​ Serialize an object of the Employee class and store it in a file. 
+b)​ Then deserialize the object from the file. 
+c)​ Display the employee details after deserialization. 
+7.​ Create a class named Book with data members bookId, title, and author. 
+a)​ Write a Java program to serialize a Book object into a file. 
+b)​ Deserialize the object from the file. 
+c)​ Display the book information on the console. 
+8.​ Create a class named BankAccount with data members accountNumber, 
+accountHolderName, and balance. 
+a)​ Serialize the BankAccount object into a file. 
+b)​ Deserialize it from the file. 
+c)​ Display the account details after reading from the file. 
+ 
+9.​ Create a class named Product with data members productId, productName, and 
+price. 
+a)​ Serialize a Product object and store it in a file named product.dat. 
+b)​ Deserialize the object from the file. 
+c)​ Print the product details. 
+10.​Create a class named Teacher with data members teacherId, teacherName, and 
+subject. 
+a)​ Serialize the Teacher object and save it into a file. 
+b)​ Deserialize the object from the file. 
+c)​ Display the teacher information after deserialization. 
+11.​Write a Java program to create a GUI application with: 
+a)​ Two text fields to enter numbers 
+b)​ One button labeled "Add" 
+c)​ One label to display the result 
+When the button is clicked, calculate the sum of the two numbers entered and display the 
+result in the label using appropriate event handling. 
+12 Write a Java program to create a GUI application with: 
+a)​ One button labeled "Change Color" 
+b)​ A panel or frame 
+When the button is clicked, change the background color of the window using proper event 
+handling. 
+
+13 Write a Java program to create a GUI application with: 
+a)​ A JComboBox containing several course names 
+b)​ A button labeled "Show Selection" 
+c)​ A label 
+14 Write a Java program to create a GUI application with: 
+●​ Two text fields (Username and Password) 
+●​ One button labeled "Login" 
+●​ One label to display a message 
+When the button is clicked, check if the username is "admin" and password is "1234".​
+Display "Login Successful" or "Invalid Credentials" in the label using event handling. 
+ 
+15 Write a Java program to create a JavaBean named EmployeeSalaryBean that stores 
+monthly salaries for 12 months using an indexed property. 
+●​ Include methods to set and get salary for a specific month using index. 
+●​ Demonstrate setting salaries for different months. 
+●​ Display all monthly salaries in the main() method. 
+ 
+16 Write a Java program to create a JavaBean named StudentGradesBean that stores grades 
+for multiple subjects using an indexed property. 
+●​ Provide methods to set and get grade by subject index. 
+●​ Demonstrate assigning grades for at least five subjects. 
+●​ Display all grades in the main() method. 
+17 Write a Java program to create a JavaBean named TemperatureBean that stores daily 
+temperature readings for a week using an indexed property. 
+●​ Implement setter and getter methods using index. 
+●​ Assign temperature values for all seven days. 
+●​ Display the weekly temperature report in the main() method. 
+18 Write a Java program to create a JavaBean named SalesBean that stores quarterly sales 
+figures using an indexed property. 
+●​ Include methods to set and retrieve sales for each quarter. 
+●​ Set values for all four quarters. 
+●​ Display the quarterly sales data in the main() method. 
+19 Write a Java program to create a JavaBean named AttendanceBean that stores attendance 
+status (Present/Absent) for multiple days using an indexed property. 
+
+●​ Provide methods to set and get attendance status by index. 
+●​ Demonstrate assigning attendance for at least 10 days. 
+●​ Display the attendance record in the main() method. 
+20. Write a Java program using JDBC to connect to a relational database and insert a new 
+record into a table named Student having fields rollNo, name, and marks. 
+●​ Accept input from the user. 
+●​ Use PreparedStatement for insertion. 
+●​ Handle SQL and connection exceptions properly. 
+●​ Ensure all database resources are properly closed 
+21 Write a Java program using JDBC to connect to a relational database and update the salary 
+of an employee in the Employee table. 
+●​ Accept empId and new salary from the user. 
+●​ Use PreparedStatement to perform the update operation. 
+●​ Display a message indicating whether the update was successful. 
+●​ Handle exceptions and close all resources properly 
+22 Write a Java program using JDBC to connect to a relational database and delete a record 
+from a table named Product with fields productId, productName, and price. 
+●​ Accept productId from the user. 
+●​ Perform the delete operation using JDBC. 
+●​ Display appropriate messages. 
+●​ Handle exceptions and ensure proper resource cleanup. 
+23 Write a Java program using JDBC to connect to a relational database and retrieve details 
+of a specific customer from a table named Customer having fields customerId, 
+customerName, and city. 
+●​ Accept customerId as input. 
+●​ Display the customer details if found. 
+●​ Handle all exceptions properly. 
+●​ Ensure proper closing of Connection, Statement, and ResultSet. 
+24 Explain the architecture of Java in detail. Describe the roles of JVM, JRE, and JDK. How does Java 
+achieve platform independence? Illustrate with a neat diagram. 
+25 Discuss the major advantages of Java such as platform independence, object-oriented 
+nature, robustness, security, multithreading, and portability. Explain each with suitable 
+examples. 
+26 Define class and object in Java.​
+Write a Java program to create a class Student with data members and methods. Create 
+objects and demonstrate method invocation. 
+ 
+
+27 What is an interface in Java?​
+Explain different access modifiers (private, default, protected, public) with examples.​
+Demonstrate how a class implements an interface. 
+28 Explain the concept of Graphical User Interface (GUI).​
+Discuss the main features of GUI and the technologies used in Java for GUI development.​
+Explain the role of Java Foundation Classes (JFC). 
+29 Explain the Java Event Delegation Model in detail.​
+Describe the roles of: 
+●​ Event Source 
+●​ Event Object 
+●​ Event Listener 
+Illustrate with a suitable example. 
+30 . Explain Bean Development Environments (BDE).​
+Describe how to use the Sun BeanBox tool to test and deploy JavaBeans. 
+31 Explain the different states in the Thread Life Cycle in Java.​
+At which states can a thread throw an InterruptedException? Justify your answer. 
+Write a Java program to create a thread that prints "Hello Java" ten times with a delay of 
+500 milliseconds between each print. 
+32 Describe the thread life cycle with a neat diagram.​
+Explain how sleep(), wait(), and join() methods may cause InterruptedException. 
+Create a Java program using the Runnable interface that prints "Multithreading in Action" 
+seven times with a 2-second delay. 
+33 Develop a Java program that demonstrates the difference between BorderLayout and 
+FlowLayout by placing the same set of buttons in two separate panels within the same frame. 
+34 Create a Java program that uses nested layout managers.​
+For example: 
+●​ Use BorderLayout for the main frame 
+●​ Use FlowLayout in the north panel 
+●​ Use GridLayout in the center panel 
+35 Define JavaBeans.​
+Explain the need for JavaBeans in component-based software development.​
+Discuss how JavaBeans promote reusability and modular programming. 
+36 . Draw and explain the JDBC architecture diagram.​
+Describe the interaction between Java Application, JDBC API, Driver Manager, JDBC Driver, and 
+Database. 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
