@@ -1,0 +1,2 @@
+3rd module: JDBC Using Relational Databases: Introduction, Best Practices for Programming for Databases, JDBC Drivers for RDBM Systems
+Till this topic, will be covered for midterm
