@@ -1,0 +1,448 @@
+Java DataBase
+Connectivity (JDBC)
+Module 3
+2/25/2026 CSE4019-Advanced JAVA Programming 1
+
+JDBC
+JDBC is an interface between Java and Database
+JDBC receives queries from Java Application
+program and communicate with Database
+All the communications are in the form of SQL
+commands
+JDBCis reponsible for
+Open a Connection
+Communicate with database
+ExecuteSQLstatements
+Retrive query results
+2/25/2026 CSE4019-Advanced JAVA Programming 2
+
+JDBC
+FeaturesofJDBC
+Platform Independent: Write once, run anywhere (Java-
+based).
+Database Independent: Works with any relational
+databaseusingdrivers.
+Standard API: Provides a standard set of interfaces
+(Connection,Statement,ResultSet,etc.).
+Secure: Uses Java security model and exception
+handling.
+EasytoUse: Simplifiesdatabaseconnectivitywithsimple
+methodcalls.
+Supports SQL: Can execute SQL queries directly from
+Javacode.
+2/25/2026 CSE4019-Advanced JAVA Programming 3
+
+4General Architecture
+CSE4019-Advanced JAVA Programming 2/25/2026
+
+5General Architecture
+• Why is this architecture also 
+multi-tiered?
+CSE4019-Advanced JAVA Programming
+ 2/25/2026
+
+6General Architecture
+CSE4019-Advanced JAVA Programming 2/25/2026JDBC architecture consists of two main layers
+1. JDBC API (Application Layer)
+2. JDBC Driver API (Driver Layer)
+
+7General Architecture
+•Application: It is a java applet or a servlet that communicates
+withadatasource.
+•TheJDBCAPI :
+•Java Database Connectivity (JDBC) is an application programming
+interface (API) for the Java programming language which defines
+howaclientmayaccessadatabase.
+•It is aJava-based data access technology used for Java database
+connectivity.
+•It is part of the Java Standard Edition platform, from Oracle
+Corporation.
+•It provides methods to query and update data in a database, and is
+orientedtowardrelationaldatabases.
+•AJDBC-to-ODBCbridgeenablesconnectionstoanyODBC-accessible
+datasourceintheJavavirtualmachine(JVM)hostenvironment.
+CSE4019-Advanced JAVA Programming 2/25/2026
+
+8General Architecture
+•TheJDBCAPI :
+•Using the JDBC API, you can access virtually any data source, from
+relationaldatabasestospreadsheetsandflatfiles.
+•JDBC technology also provides a common base on which tools and
+alternateinterfacescanbebuilt.
+•TheJDBCAPIiscomprisedoftwopackages:
+•java.sql: ProvidestheAPIforaccessingandprocessingdatastoredinadatasource
+•javax.sql: extendsthefunctionalityoftheJDBCAPIfromaclient-side APItoaserver-sideAPI,
+•The JDBC API allows Java programs to execute SQL statements and
+retrieveresults.
+•SomeoftheimportantinterfacesdefinedinJDBCAPIareasfollows:
+Driver interface , ResultSet Interface , RowSet Interface, Prepared
+Statement interface, Connection interface, and Classes defined in
+JDBCAPIareasfollows:DriverManagerclass,Typesclass,Blobclass,
+clobclass.
+CSE4019-Advanced JAVA Programming 2/25/2026
+
+9General Architecture
+•JDBC Classes and Interfaces
+CSE4019-Advanced JAVA Programming 2/25/2026
+
+
+10General Architecture
+•DriverManager :
+•A class in Java that manages the set of Java Database Connectivity (JDBC)
+driversthatanapplicationcanuse.
+•Itactsasalayerbetweentheuserandthedrivers,handlingtaskssuchas:
+•Establishing a connection between a database and the
+appropriatedriver
+•Keepingtrackofavailabledrivers
+•Managingdriverlogintimelimits
+•Printinglogandtracingmessages
+•It plays an important role in the JDBC architecture. It uses some
+database-specific drivers to effectively connect enterprise
+applicationstodatabases.
+•The DriverManager class in Java provides the basic service for managing a set of
+JavaDatabaseConnectivity(JDBC)drivers.Itmaintainsalistofdatabasedrivers.
+•The DriverManager class is part of the java.sql package. It is a singleton class.
+OnlyoneinstanceofthisclassiscreatedinaJVM.
+•The DriverManager class is used as part of the JDBC API via the
+staticgetConnection()method.
+CSE4019-Advanced JAVA Programming 2/25/2026
+
+11General Architecture
+•JDBC drivers: To communicate with a data source through JDBC, you
+needaJDBCdriver that intelligentlycommunicateswiththerespectivedata
+source.
+•DriverManager manages the set of Java Database Connectivity (JDBC)
+drivers that are available for an application to use. Applications can use
+multiple JDBC drivers concurrently if necessary. Each application specifies a
+JDBCdriverbyusingaUniformResourceLocator(URL).
+•A JDBC (Java Database Connectivity) driver is a software component that
+allows Java applications to interact with databases. It acts as a bridge
+between the Java application and the database, translating Java calls into
+database-specificcommands.
+CSE4019-Advanced JAVA Programming 2/25/2026
+
+12
+ CSE4019-Advanced JAVA Programming 2/25/2026
+
+Open Data Base Connectivity (ODBC)
+Standard designed by Microsoft to interact with
+databases
+ODBC is packed with many features and extending
+supportforalltypeofdatabases
+ODBC provides multiple mechanism for performing single
+taskandnumberof datahandlingcapabilities
+2/25/2026 CSE4019-Advanced JAVA Programming 13
+
+JDBC vs ODBC
+JDBCandODBCare X/OPENcall levelinterface for
+SQL
+JDBCis notaderivativeofODBC
+JDBCiscompactandsimple
+JDBC is meantforsimpleaccess tothedatabaseand 
+difficulttask atleast makepossible
+2/25/2026 CSE4019-Advanced JAVA Programming 14
+
+JDBC Drivers
+JDBCdriveris responsibleformaking connectionwith different 
+databases
+It is also translating the queries received from Application and 
+submit into database
+Areversetranslation is also requiredto performby theDriver
+JDBCDriverspeaksJAVAtoApplicationandnative language 
+todatabase
+JDBCDriversareexistsforalmost all databases
+Appropriatedriverwill loadforrequieddatabase
+2/25/2026 CSE4019-Advanced JAVA Programming 15
+
+JDBC and ODBC
+•JDBC (Java Database Connectivity) and ODBC (Open Database
+Connectivity).
+•These both are API standards used for connecting applications to
+databases.
+•ODBC can be used by various programming languages as it is a general
+APIstandard.
+•But JDBC is Java-specific and it provides a Java-based interface for
+databaseaccess.
+•ODBC drivers are not Java-centric which means it is designed to work
+withdifferentlanguagesthroughacommoninterface.
+•JDBCdriversareJava-centric.
+2/25/2026 CSE4019-Advanced JAVA Programming 16
+
+JDBC and ODBC
+•.
+ODBC JDBC Parameters
+Stands for Java Database 
+ConnectivityStands for Java Database 
+ConnectivityFull Form
+Introduced by Microsoft in 
+1992Introduced by Sun 
+MicroSystemsin 1997 Created By
+Use any programming 
+language like C, C++ etc.Uses only Java Programming 
+languageSupports
+C-based API Java based API API
+Platform Dependent Platform Independent Platform
+ODBC is Object Oriented JDBC is Procedural Lanuage
+It is designed for any 
+applications written in C, 
+C++, Java, Perl etc.Specially designed for Java 
+ApplicationsApplications
+It does not requires.It requires Java Virtual 
+Machine (JVM)Requires
+Faster in performance as 
+compared to ODBCSlower in performance as 
+compared to ODBCComparisonDifference Between JDBC and ODBC
+2/25/2026 CSE4019-Advanced JAVA Programming 17
+
+JDBC
+•The Java Development Kit (JDK), which contains the
+JDBC API interfaces ,as wellasthe JDBC drivermanager
+•The JDBC driverfor a particular brand of relational
+database
+•The JDBC API interfaces allow Java applications to
+accessdatainauniform,vendor-independentfashion.
+•The JDBC driver manager is responsible for finding and
+loading the correct JDBC driver based on the connection
+string.
+•The JDBC drivercontains classes that implement the
+standard JDBC interfaces. The JDBC driver is responsible
+for actually communicating with the database and
+carryingoutSQL commandsandqueries.
+2/25/2026 CSE4019-Advanced JAVA Programming 18
+
+JDBC
+•JDBC drivers can be implemented in four ways:
+1.JDBC-ODBC bridge plus ODBC driver . The JDK
+contains a JDBC-ODBC bridge, which takes JDBC calls
+from a Java application and turns them into ODBC calls,
+utilizing the ODBC driver that is installed on the same
+machine.
+2.Native-API partly-Java driver. This kind of driver takes
+JDBC calls from a Java application and turns them into
+calls to the database vendor's native client access
+softwarethatisinstalledon the same machine.
+2/25/2026 CSE4019-Advanced JAVA Programming 19
+
+JDBC
+•JDBC drivers can be implemented in four ways:
+3. JDBC-Net pure Java driver . This kind of driver takes
+JDBC calls from a Java application and turns them into a
+vendor independent net protocol. At the other end of the
+network, the protocolis translated by amiddleware server
+into avendor specificprotocol.
+4. Native-protocol pure Java driver . This kind of driver 
+takes calls from Java applications and turns them into 
+vendor specific protocols.
+2/25/2026 CSE4019-Advanced JAVA Programming 20
+
+JDBC Drivers
+JDBC Driver is a software component that enables java
+application to interact with the database. There are 4 types of
+JDBCdrivers:
+1. JDBC-ODBC bridgedriver
+2. Native-APIdriver(partially javadriver)
+3. Network Protocoldriver(fully javadriver)
+4.Thin driver(fully javadriver)
+2/25/2026 CSE4019-Advanced JAVA Programming 21
+
+1) JDBC-ODBC bridge driver
+The JDBC-ODBC bridge driver uses ODBC driver to connect 
+to the database. The JDBC-ODBC bridge driver converts JDBC 
+method calls into the ODBC function calls. This is now 
+discouraged because of thin driver.
+2/25/2026 CSE4019-Advanced JAVA Programming 22
+
+1) JDBC-ODBC bridge driver
+Oracle does not support the JDBC-ODBC Bridge from Java 8. 
+Oracle recommends that you use JDBC drivers provided by the 
+vendor of your database instead of the JDBC-ODBC Bridge.
+Advantages:
+easy to use.
+can be easily connected to any database.
+Disadvantages:
+Performance degraded because JDBC method call is converted 
+into the ODBC function calls.
+The ODBC driver needs to be installed on the client machine.
+2/25/2026 CSE4019-Advanced JAVA Programming 23
+
+2) Native-API driver
+The Native API driver uses the client-side libraries of the 
+database. The driver converts JDBC method calls into native 
+calls of the database API. It is not written entirely in java.
+2/25/2026 CSE4019-Advanced JAVA Programming 24
+
+2) Native-API driver
+Advantage:
+performance upgraded than JDBC-ODBC bridge driver.
+Disadvantage:
+The Native driver needs to be installed on each client machine.
+The Vendor client library needs to be installed on client 
+machine.
+2/25/2026 CSE4019-Advanced JAVA Programming 25
+
+3) Network Protocol driver
+The Network Protocol driver uses middleware (application 
+server) that converts JDBC calls directly or indirectly into the 
+vendor-specific database protocol. It is fully written in java.
+2/25/2026 CSE4019-Advanced JAVA Programming 26
+
+3) Network Protocol driver
+Advantage:
+No client-sidelibrary is required because of application server 
+that can perform many tasks like auditing, load balancing, 
+logging etc.
+Disadvantages:
+Network support is required on client machine.
+Requires database-specific coding to be done in the middle tier.
+Maintenance of Network Protocol driver becomes costly 
+because it requires database-specific coding to be done in the 
+middle tier.
+2/25/2026 CSE4019-Advanced JAVA Programming 27
+
+4) Thin driver
+The thin driver converts JDBC calls directly into the vendor-
+specific database protocol. That is why it is known as thin 
+driver. It is fully written in Java language.
+2/25/2026 CSE4019-Advanced JAVA Programming 28
+
+4) Thin driver
+Advantage:
+Better performance than all other drivers.
+No software is required at client side or server side.
+Disadvantage:
+Drivers depend on the Database.
+2/25/2026 CSE4019-Advanced JAVA Programming 29
+
+JDBC Components
+The JDBC core comes with the following interfaces and
+classes:
+•Driver:This is the interface that controls
+communication with the database server. It also
+withdrawsinformationassociatedwithdriverobjects.
+•Driver Manager :It manages any required set of JDBC
+drivers
+•Connection: This is an interface or session that houses
+allthemethodstoconnecttoanydatabase.
+•Statements :This is used to carry out a static SQL
+statement
+•ResultSet :Thisisusedtoaccesstheresultrow-by-row
+2/25/2026 CSE4019-Advanced JAVA Programming 30
+
+JDBC Implementation
+SevenSteps
+–Importjava.sqlpackage
+–Loadandregisterthedriver
+–Establishaconnectiontothe 
+databaseserver
+–Createastatement
+–Executethestatement
+–Retrivetheresult
+–Closethestatementand
+connection
+2/25/2026 CSE4019-Advanced JAVA Programming 31
+
+Load and Register Driver
+Class.forName("DriverClassName");
+Eg:1 Class.forName(“sun.jdbc.odbc.JdbcOdbcDriver”)
+2 Class.forName("com.mysql.jdbc.Driver");
+Note:Callingthe Class.forName automaticallycreates an instanceofadriver 
+and registers it with the DriverManager, so you don't need to create an 
+instanceof theclass
+2/25/2026 CSE4019-Advanced JAVA Programming 32
+
+Establish Connection
+•After registering the driver class, the next step in establishing database
+connectivity with JDBC is to create a connection. The connection object
+represents a session between the Java application and the database, allowing it to
+sendSQLstatementsandretrieveresults.
+•To create a connection, provide specific details such as the database URL,
+username,andpassword.
+Connection conn=DriverManager.getConnection("URL");
+Thedriversloadedrecognizes,theJDBCURLin DriverManager.getConnection,that 
+driverestablishesa connectionto theDBMSspecifiedin theJDBCURL.
+TheDriverManagerclass,manages allof the detailsofestablishingtheconnection
+TheconnectionreturnedbythemethodDriverManager.getConnectionisanopen 
+connectionyoucanuseto createJDBCstatementsthatpassyourSQLstatements 
+totheDBMS.
+DriverManager.getConnection(“jdbc:mysql://172.16.5.27/campusdb”,”root”,”root”);
+33
+
+Managing Statement
+•After establishing the database connection, the next step in the
+process of database connectivity with JDBC is to create a
+statement object. The statement object enables to execute SQL
+queriesand updatestatementsagainstthedatabase.
+•To create a statement, use the createStatement() method provided
+by theConnectionobject.
+createStatement()of Connection class is used to make objectof
+Statements .
+Eg:Statementstat=con.createStatement();
+Statementobjectcan call executeQuery (“SQL 
+Command”)to executea selectstatement.
+UseexecuteUpdate (“SQLCommand”)to executeany data
+updationcommands
+2/25/2026 CSE4019-Advanced JAVA Programming 34
+
+Execute Queries
+•The next step in establishing database connectivity with JDBC is
+to executequeries.
+•JDBC supports different types of queries, such as SELECT,
+INSERT, UPDATE, andDELETE.
+•Executing queries allows retrieving data from the database or
+modifyingtheexisting data.
+•Now, use the appropriate method provided by the Statement
+object, such as executeQuery() for SELECT queries or
+executeUpdate() forothertypesofqueries.
+2/25/2026 CSE4019-Advanced JAVA Programming 35
+
+Execute Queries
+2/25/2026 CSE4019-Advanced JAVA Programming 36
+
+Close Connection
+After executing the queries and processing the results, it is
+important to close the database connection to release the
+resourcesandensurepropercleanup.
+Closing the connection is necessary to free up system
+resources, close any open database connections, and avoid
+potentialmemoryleaks.
+To close the connection, call the close() method on the
+Connectionobject.
+2/25/2026 CSE4019-Advanced JAVA Programming 37
+
+Resultset
+•In Java database connectivity, the ResultSet is an
+interface, and it has a lot of built-in methods for
+handlingtheresultsofSQLqueries.
+•ResultSet interface represents the result set of a database query
+by usingSQL.
+•When weusePreparedStatement for performing SQLquery
+statements,itwill returnthePreparedStatementobject.
+•Then we call the executeQuery() by using the
+PreparedStatement object and this result is assigned to the
+ResultSetobject.
+•ThisResultSetobjectcontainstheresultof theSQLquery.
+2/25/2026 CSE4019-Advanced JAVA Programming 38
+
+Resultset
+•The below statements is representing the syntax of ResultSet
+with PreparedStatement object.s used for executing the SQL
+queries.
+•
+PreparedStatement preparedStatement = 
+connection.prepareStatement(sql_query);
+ResultSet resultSet = 
+preparedStatement.executeQuery();
+2/25/2026 CSE4019-Advanced JAVA Programming 39
+
+Metadata
+Information that describes the structure and
+propertiesofyourdata
+TwotypesofMetadata
+Resultset Metadata: Information about the data contained
+in a Resultset, such as column name, number of columns
+andcolumndatatypes
+Database Metadata: Information about database, such as 
+supported functions, username, current transaction 
+isolationlevel
+2/25/2026 CSE4019-Advanced JAVA Programming 40
+

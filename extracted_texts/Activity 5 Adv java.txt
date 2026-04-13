@@ -1,0 +1,29 @@
+Activity- 5
+Topics Cover ed: Applets & Basics, Networking Pr ogramming and RMI, Servlets 
+and Web applications, EJB Basics
+1.Explain the complete life cycle of an Applet with a suitable diagram and example. 
+Also explain how it interacts with HTML.
+2.Describe socket programming in Java with client-server architecture. Explain how 
+communication is established.
+3.Explain Remote Method Invocation (RMI) in detail. Describe architecture, 
+components, and working process.
+4.Explain the architecture of web applications using Servlets. Discuss the role of the 
+Servlet container and request-response model.
+5.Differentiate between Applets and Servlets in terms of execution, security , and 
+performance.
+6.Describe different types of Session Beans (Stateful, Stateless). Explain their lifecycle 
+and use cases.
+7.Discuss EJB security mechanisms. Explain how authentication and authorization are 
+handled.
+8.Evaluate the role of Servlets in modern web applications compared to newer 
+technologies.
+9.Analyze how EJB simplifies enterprise application development.
+10.Discuss the advantages and challenges of using RMI in distributed systems.
+11.What are the limitations of socket programming compared to RMI?
+12.A web application needs to process user requests dynamically .
+Explain why Servlets are preferred over Applets.
+13.A system requires communication between two remote machines.
+Explain how socket programming can be used.
+14.Describe the HTML  tags and attributes used to embed an applet. Explain parameters 
+like code, width, height, and param with suitable examples.
+

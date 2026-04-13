@@ -1,0 +1,16 @@
+Activity- 4
+Topics Covered: Menus & Toolbars, Dialog Boxes, Component Organizers, 
+Advanced Components
+1.Explain the process of menu creation in Swing. Include JMenuBar, JMenu, and JMenuItem.
+2.Explain dialog boxes in Swing. Discuss OptionPane, custom dialogs, file chooser, and color 
+chooser with use cases. 
+3.Explain JSplitPane and JTabbedPane with suitable examples.
+4.What are JDesktopPane and JInternalFrame? Explain their use in MDI applications.
+5.Explain the use of JList and JTable in Swing applications.
+6.Explain component organizers in Swing: JSplitPane, JTabbedPane, JDesktopPane, and 
+JInternalFrame. Discuss their role in complex GUI applications.
+7.Design a file explorer interface using Swing. Explain how JTree, JTable, and JScrollPane work 
+together.
+8.A desktop application needs multiple internal windows. Explain how JDesktopPane and 
+JInternalFrame can be used to implement this.
+

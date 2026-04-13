@@ -1,0 +1,14 @@
+Activity-1
+Q) Develop a Bank Account Management System  that performs deposit and withdrawal 
+operations.
+Create a custom exception InsufficientBalanceException .
+Throw the exception when a withdrawal amount exceeds the available balance.
+Use try-catch-finally  blocks to handle exceptions gracefully .
+Use the throws  keyword to propagate exceptions from methods.
+Ensure that a transaction summary is printed in the finally  block.
+Q) Implement the Producer–Consumer  problem  using Java threads.
+Use a shared buf fer with a fixed size.
+Implement synchronization using wait() , notify() , or notifyAll() .
+Ensure thread safety and avoid race conditions.
+Demonstrate correct inter -thread communication.
+

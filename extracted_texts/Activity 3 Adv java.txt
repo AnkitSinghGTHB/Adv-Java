@@ -1,0 +1,22 @@
+Activity- 3
+Topics Cover ed: MVC & Design Pattern, Layout Management, Text Input 
+Components, Choice Components,  
+1.Explain the MVC (Model-V iew-Controller) design pattern in Java Swing. Illustrate 
+how it is implemented in Swing components like buttons.
+2.Discuss the advantages of using MVC architecture in GUI applications. Explain how 
+it improves modularity , maintainability , and scalability .
+3.Design a GUI layout for a calculator form using appropriate layout managers. Justify 
+your choice of layout managers.
+4.A GUI freezes when resized. Explain how layout managers can solve this issue.
+5.Design a student management system GUI using Swing. Explain the use of layout 
+managers, input fields, menus, and advanced components.
+6.Explain all text input components in Swing with examples and use cases. Include 
+JTextField, JT extArea, JPasswordField, and JScrollPane.
+7.Compare and analyze choice components in Swing: JCheckBox, JRadioButton, 
+JComboBox, and JSlider with examples.
+8.A desktop application needs multiple internal windows. Explain how JDesktopPane 
+and JInternalFrame can be used to implement this.
+9.Discuss how advanced components like JT able and JT ree improve data visualization.
+10.A music player application needs volume control and mode selection. Which Swing 
+components are suitable?
+

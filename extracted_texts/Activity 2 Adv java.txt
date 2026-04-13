@@ -1,0 +1,16 @@
+Activity-2
+1.Differentiate between Statement, PreparedStatement, and CallableStatement. 
+Compare them with respect to syntax, performance, security , and practical use cases.
+2.What is connection pooling? Why is it required in enterprise database applications?
+Explain its working principle and advantages over normal JDBC connections.
+3.A web application connects to the database thousands of times per minute.
+Explain why DriverManager -based connections may become inefficient and how 
+DataSource with connection pooling solves the problem.
+4.Explain with examples how SQL  query results are mapped into Java objects.
+Discuss the role of getters like getInt(), getString(), getDate(), and the importance of 
+correct type mapping.
+5.Compare java.sql API and javax.sql API in detail. Highlight their major features, 
+differences, and practical usage in enterprise applications.
+6.Evaluate the role of javax.sql in modern enterprise database programming. Why is it 
+considered an improvement over basic JDBC usage?
+

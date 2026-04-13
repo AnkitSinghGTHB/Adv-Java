@@ -1,5 +1,16 @@
-# Advanced Java - Question Bank Solutions
+# Advanced Java - Study Modules & Question Bank Solutions
 
+## Module Study Guides
+Comprehensive module-wise study materials, activities, and questions:
+- **[Module 1: Java Basics](Module_1_Java_Basics.md)**
+- **[Module 2: AWT and GUI](Module_2_AWT_and_GUI.md)**
+- **[Module 3: JDBC](Module_3_JDBC.md)**
+- **[Module 4: MVC and Swing](Module_4_MVC_and_Swing.md)**
+- **[Module 5: Networking, Applets, Servlets, and EJB](Module_5_Networking_and_Applets.md)**
+
+---
+
+## Question Bank Solutions
 This repository contains the solutions to the Advanced Java Question Bank. Click on any question to view its solution.
 
 - **[Question 1](Question_Bank_Solutions/Q1.md)**: Write a Java program to create a user-defined exception named InsufficientBalanc...
