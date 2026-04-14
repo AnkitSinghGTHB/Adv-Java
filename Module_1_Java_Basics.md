@@ -69,7 +69,16 @@ class Circle {
 
 ## 4. Exception Handling
 
-An exception is an unwanted or unexpected event occurring during the execution of a program which disrupts the normal flow. To gracefully handle errors, we use `try`, `catch`, `finally`, `throw`, and `throws`.
+An exception is an unwanted or unexpected event occurring during the execution of a program which disrupts the normal flow. To gracefully handle errors, Java provides five keywords:
+
+- **try-catch:** We use try-catch block for exception handling in our code. `try` is the start of the block and `catch` is at the end of try block to handle the exceptions. We can have multiple catch blocks with a try and try-catch block can be nested also. `catch` block requires a parameter that should be of type Exception.
+- **finally:** finally block is optional and can be used only with try-catch block. Since exception halts the process of execution, we might have some resources open that will not get closed, so we can use finally block. finally block gets executed always, whether exception occurred or not.
+- **throw:** keyword is used to actively throw exception to the runtime to handle it.
+- **throws:** We can provide multiple exceptions in the throws clause and it can be used with main() method also to declare exceptions a method might throw.
+
+### Types of Exceptions
+- **Checked Exceptions:** A checked exception is an exception that occurs at the compile time. These exceptions cannot simply be ignored at the time of compilation; the programmer should take care of (handle) these exceptions. Examples: `ClassNotFoundException`, `InterruptedException`.
+- **Unchecked Exceptions:** An unchecked exception is an exception that occurs at the time of execution. These are also called as Runtime Exceptions. These include programming bugs, such as logic errors or improper use of an API. Runtime exceptions are ignored at the time of compilation. Examples: `ArithmeticException`, `ArrayIndexOutOfBoundsException`.
 
 ### 📌 Activity Question: Bank Account Management System
 **Question:** Develop a Bank Account Management System performing deposit/withdrawal operations. Create a custom exception `InsufficientBalanceException`. Use `try-catch-finally` blocks and the `throws` keyword. Ensure a transaction summary is printed in the `finally` block.
