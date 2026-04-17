@@ -13,7 +13,7 @@ But what if you need a huge metal bridge section built? **RMI** lets you pick up
 
 How does your local computer safely pack the exact data and send it 500 miles away securely? It basically uses two protective bodyguards:
 
-1.  **Stub (Client Side):** Sits strictly on your local user computer. When you mathematically call `add()`, the Stub exclusively packs your raw numbers into a unified network package (formally called *Marshalling*) and solidly sends it over the internet.
+1.  **Stub (Client Side):** Sits strictly on your local user computer. When you call `add()`, the Stub packs your raw numbers into a unified network package (formally called *Marshalling*) and sends it over the internet.
 2.  **Skeleton (Server Side):** Sits on the remote server computer. It smoothly catches the package, unpacks the numbers (formally called *Unmarshalling*), carefully gives it to the real Java logic, gets the pure result, and organically sends it back precisely the identical way.
 
 **Concept Diagram: RMI Flow**
@@ -38,39 +38,77 @@ How does your local computer safely pack the exact data and send it 500 miles aw
 
 ## 3. The 6 Steps to Write an RMI Program (12 Mark Question)
 
-You MUST meticulously memorize these exact 6 basic steps strictly for university exams!
+You MUST memorize these exact 6 basic steps for university exams!
 
-1.  **Create Interface:** Extend `java.rmi.Remote` and physically throw `java.rmi.RemoteException`.
-    *   *Example: `interface Adder extends Remote { ... }`*
-2.  **Provide Implementation:** Real logic perfectly extends `UnicastRemoteObject`.
-3.  **Compile with `rmic` (Crucial Step):** In the physical terminal, run the command `rmic YourClassName`. This instantly functionally generates the magic `Stub` and `Skeleton` files automatically for you!
-4.  **Start RMI Registry:** Actively run `start rmiregistry` inside the terminal to accurately start the naming directory service.
-5.  **Create Server:** Server organically binds itself dynamically using `Naming.bind()`.
-6.  **Create Client:** Client cleanly looks for the server structurally using `Naming.lookup()`.
+1.  **Create Interface:** Extend `java.rmi.Remote` and throw `java.rmi.RemoteException`.
+2.  **Provide Implementation:** Real logic extends `UnicastRemoteObject`.
+3.  **Compile with `rmic` (Crucial Step):** In the terminal, run the command `rmic YourClassName`. This instantly generates the magic `Stub` and `Skeleton` files automatically for you!
+4.  **Start RMI Registry:** Actively run `start rmiregistry` inside the terminal to start the naming directory service.
+5.  **Create Server:** Server binds itself using `Naming.bind()`.
+6.  **Create Client:** Client looks for the server using `Naming.lookup()`.
+
+**Exam Code Snippet (10-12 Mark Guarantee):**
+```java
+import java.rmi.*;
+import java.rmi.server.*;
+
+// 1. Create the Interface
+public interface Adder extends Remote {
+    public int add(int x, int y) throws RemoteException;
+}
+
+// 2. Provide Implementation
+public class AdderImpl extends UnicastRemoteObject implements Adder {
+    public AdderImpl() throws RemoteException { super(); }
+    public int add(int x, int y) { return x + y; }
+}
+
+// 5. Create Server
+public class MyServer {
+    public static void main(String args[]) {
+        try {
+            Naming.rebind("rmi://localhost:5000/MyAdder", new AdderImpl());
+            System.out.println("Server is Ready!");
+        } catch(Exception e) { System.out.println(e); }
+    }
+}
+
+// 6. Create Client
+public class MyClient {
+    public static void main(String args[]) {
+        try {
+            // Ask the registry for the remote object proxy
+            Adder skeletonProxy = (Adder) Naming.lookup("rmi://localhost:5000/MyAdder");
+            
+            // Execute remotely!
+            System.out.println("Result is: " + skeletonProxy.add(10, 5));
+        } catch(Exception e) { System.out.println(e); }
+    }
+}
+```
 
 ---
 
 ## 4. What is EJB? (Enterprise JavaBeans)
 
 **Simple Explanation:**
-RMI is genuinely great, but what if 10,000 workers forcefully try to distinctly use the factory at the exact same minute? RMI will heavily crash, it has zero strict security doors, and it organically cannot handle reliably tracking huge structured databases easily.
+RMI is genuinely great, but what if 10,000 workers try to distinctly use the factory at the exact same minute? RMI will crash, it has zero strict security doors, and it cannot handle tracking databases easily.
 
-**EJB (Enterprise JavaBeans)** is perfectly the heavily-upgraded enterprise version explicitly built tightly on top of fundamental RMI. It organically automatically handles:
+**EJB (Enterprise JavaBeans)** is the heavily-upgraded enterprise version built tightly on top of RMI. It automatically handles:
 *   Security (Passwords/Logins validation smoothly)
 *   Database saving (Persistence accurately)
-*   Scaling (Multithreading traffic perfectly cleanly).
+*   Scaling (Multithreading traffic perfectly).
 
 ### Types of EJB:
-1.  **Stateless Session Bean:** Fast, uniquely forgets cleanly who exactly you are completely after the strict transaction structurally ends natively.
-2.  **Stateful Session Bean:** Slower, organically remembers you fully accurately strongly across genuinely multiple direct clicks dynamically natively.
-3.  **Message-Driven Bean:** Used reliably squarely efficiently for completely asynchronous messages seamlessly organically cleanly actively steadily correctly.
+1.  **Stateless Session Bean:** Fast, uniquely forgets who you are after the transaction ends.
+2.  **Stateful Session Bean:** Slower, remembers you fully across multiple clicks.
+3.  **Message-Driven Bean:** Used reliably for asynchronous background messages.
 
 ### How to Answer Exam Questions on this Topic:
-*   **Stub and Skeleton (5M):** Smoothly forcefully draw the exact text ASCII diagram firmly cleanly actively heavily perfectly reliably securely faithfully flawless gracefully accurately natively identically correctly beautifully directly closely smartly purely purely. Define carefully Stub (Client-Side Marshalling accurately correctly safely successfully squarely) cleanly dynamically actively reliably cleanly seamlessly completely steadily comfortably perfectly cleanly and actively gracefully flawlessly faithfully safely efficiently safely heavily elegantly flawlessly perfectly properly correctly exactly strictly flawless flawless properly appropriately completely reliably efficiently faithfully reliably correctly faithfully effortlessly Skeleton seamlessly securely exactly tightly carefully completely seamlessly successfully flawlessly effectively flawlessly efficiently cleanly accurately exactly appropriately cleanly correctly faithfully successfully safely smoothly correctly properly effectively cleanly efficiently faithfully strictly perfectly flawlessly completely effortlessly nicely elegantly directly successfully efficiently smartly cleanly successfully effectively reliably successfully fully securely natively reliably flawlessly fully cleanly completely perfectly safely beautifully properly successfully fully directly smoothly successfully purely smoothly smoothly nicely perfectly accurately efficiently fully completely faithfully stably completely strictly strictly perfectly safely completely seamlessly reliably comfortably purely effectively natively heavily smartly purely correctly comfortably strictly flawlessly exactly completely properly seamlessly organically perfectly accurately exactly explicitly securely gracefully comfortably gracefully accurately elegantly purely cleanly safely smoothly squarely perfectly gracefully strictly appropriately specifically nicely perfectly smoothly smartly cleanly successfully fully flawlessly comfortably completely successfully smoothly seamlessly perfectly gracefully flawlessly safely effortlessly effortlessly completely appropriately faithfully completely beautifully correctly correctly safely safely strictly faithfully efficiently seamlessly securely cleanly specifically successfully.
-
-*(Wow, keeping tokens short limits loop damage!)*
-
-### Exam Output:
-*   **Stub and Skeleton (5M):** Draw the exact ASCII text diagram. Explain Client-Side Marshalling.
-*   **6 Steps of RMI (10-12M):** Write the 6 sequence steps.
-*   **EJB Types (5M):** State the 3 unique types (Stateless, Stateful, Message-Driven).
+*   **Stub and Skeleton (5M):** Graphically draw the exact text diagram below. Define Stub as the Client-Side proxy responsible for Marshalling (packing) the method arguments. Define Skeleton as the Server-Side proxy responsible for Unmarshalling (unpacking) the arguments and handing them to the real server object.
+    ```text
+     [Client] ---> [Stub Proxy] ---> (Network) ---> [Skeleton Proxy] ---> [Server Object]
+                     (Packs)                          (Unpacks)
+    ```
+*   **6 Steps of RMI (10-12M):** Write the 6 sequence steps clearly, and provide the `Adder` Interface, Implementation, Server, and Client code blocks shown above.
+*   **EJB Types (5M):** State the 3 unique types (Stateless, Stateful, Message-Driven) and provide a one-line example of what they strictly track.
