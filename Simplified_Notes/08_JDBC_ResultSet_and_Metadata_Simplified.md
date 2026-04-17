@@ -15,14 +15,41 @@ You are given a "cursor" (a reading pointer). Initially, the pointer sits just a
 ## 2. Statement vs PreparedStatement (Important Difference!)
 
 **Simple Explanation:**
-A `Statement` is like giving a builder completely new instructions every single day to build a simple wall. They have to read and figure it out from scratch every time.
-A `PreparedStatement` is like giving the builder a pre-approved template: "Build the exact same wall, but I will simply give you the color later (*parameterizing*)". The builder pre-plans the work, so it's super fast! Most importantly, it completely blocks malicious people from slipping in destructive notes (Security against SQL Injection).
+A **`Statement`** is like giving a builder completely new instructions every single day to build a wall. They have to stop, read, and figure it out from scratch every time. Also, if a malicious person slips a fake instruction into the paper, the builder might blindly follow it and destroy the wall!
+A **`PreparedStatement`** is like giving the builder a safe, pre-approved template: "Build this exact wall, but I will simply tell you the brick color later." The builder pre-plans the work once, so it's super fast! Most importantly, because the template is locked, nobody can slip in fake destructive instructions (this is called stopping "SQL Injection" hacks).
 
-| Feature | `Statement` | `PreparedStatement` |
-| :--- | :--- | :--- |
-| **Speed** | Slower (Query is re-compiled every time) | **Faster** (Query is Pre-compiled securely) |
-| **Security** | Vulnerable to hacking via SQL Injection | **100% Safe** against SQL Injection |
-| **Parameters** | Does NOT support variable parameters | **Supports `?` placeholders** |
+**Concept Diagram: Statement vs PreparedStatement**
+
+```text
+      [ Statement ]                            [ PreparedStatement ]
+  (Re-reads every time)                       (Pre-planned Template)
+
+   "Drop table users!"                          "Select where age = ?"
+          |                                              |
+ Database blindly runs it.                   Template is locked safely.
+  *Hacker deletes data!*                     Hacker input is treated just
+                                              as text, not as a command!
+```
+
+**Key Differences (10 Points for Exams):**
+
+| Point | Feature | `Statement` (The Slow Reader) | `PreparedStatement` (The Safe Template) |
+| :--- | :--- | :--- | :--- |
+| **1** | **How it runs** | Text is sent and compiled from scratch every single time. | Text template is pre-compiled exactly once. |
+| **2** | **Speed / Performance** | Slower if you run the exact same command multiple times. | Vastly faster for running the same command repeatedly. |
+| **3** | **Security Level** | Very low. Extremely vulnerable to "SQL Injection" hacking. | High. 100% safe against "SQL Injection" hacks. |
+| **4** | **Placeholders (`?`)** | Does NOT support any placeholders. | Fully supports `?` placeholders for filling in blanks. |
+| **5** | **Readability of Code** | Messy (requires lots of `+` signs to combine words). | Very clean and easy to read using `?` marks. |
+| **6** | **Types of Data** | Hard to safely insert photos or complex files. | Easily handles inserting complex files/photos (BLOBs). |
+| **7** | **Database Caching** | The database cannot easily memorize (cache) the instructions. | The database easily memorizes the locked template. |
+| **8** | **Best Use Case** | When you only need to run a command exactly once. | When running the same command many times (like User Login). |
+| **9** | **Creation Method** | Created using `con.createStatement()`. | Created using `con.prepareStatement(query)`. |
+| **10** | **Parent Hierarchy** | It is the basic parent Interface. | It is a child extending the `Statement` Interface. |
+
+**Real-World Example:**
+
+*   **`Statement` Example (Bad for Logins):** A basic "View All Products" button. It never changes and doesn't take user text, so running it once as a `Statement` is fine.
+*   **`PreparedStatement` Example (Great for Logins):** A User Login screen. Millions of people type their passwords here. If you use a normal `Statement`, a hacker can type a fake database command into the password box to delete your website! By using a `PreparedStatement`, the hacker's text is forced to stay strictly as "text" and cannot execute as a destructive command.
 
 **Exam Code (Using PreparedStatement):**
 ```java

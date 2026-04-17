@@ -112,3 +112,44 @@ RMI is genuinely great, but what if 10,000 workers try to distinctly use the fac
     ```
 *   **6 Steps of RMI (10-12M):** Write the 6 sequence steps clearly, and provide the `Adder` Interface, Implementation, Server, and Client code blocks shown above.
 *   **EJB Types (5M):** State the 3 unique types (Stateless, Stateful, Message-Driven) and provide a one-line example of what they strictly track.
+*   **Differences Between RMI and EJB (10-12M):** Draw the basic architectural diagram and provide at least 10 key differences as shown below.
+
+---
+
+## 5. Differences Between RMI and EJB (Ultimate Comparison)
+
+**Concept Diagram: RMI vs EJB Architecture**
+
+```text
+       [RMI Model]                          [EJB Model]
+   (Direct Connection)               (Managed Container Service)
+
+ [Client] ----> [RMI Server]        [Client] ---> [[ EJB Container ]]
+               (Your Logic)               |      ---> [Security]
+                                          |      ---> [Transactions]
+    *No built-in security*                |      ---> [Connection Pools]
+    *No automatic scaling*                |-----> [EJB Real Object]
+                                          
+                                    *Fully Managed & Highly Secure*
+```
+
+**Key Differences (11 Points for Exams)**
+
+| Point | Feature | RMI (Remote Method Invocation) | EJB (Enterprise JavaBeans) |
+| :--- | :--- | :--- | :--- |
+| **1** | **Primary Purpose** | Basic remote communication between Java apps. | Building massive, secure, distributed enterprise apps. |
+| **2** | **Architecture** | Direct client-server framework (Stub/Skeleton). | Runs within a strict managed EJB Container (App Server). |
+| **3** | **Underlying Tech** | Lower-level foundational networking technology. | Advanced component built *on top* of RMI internally. |
+| **4** | **Middleware** | Does not require any specialized application server. | Strictly requires an EJB Container (like JBoss, GlassFish). |
+| **5** | **Security** | No built-in security (developers write it manually). | High-level automatic security (declarative annotations). |
+| **6** | **Transactions** | No built-in database/transaction rollback features. | Fully automated transaction management (ACID properties). |
+| **7** | **Scalability** | Poor scalability; struggles with huge traffic spikes. | Highly scalable through automated connection pooling. |
+| **8** | **Complexity & Cost** | Lightweight, simple, and very cheap to implement. | Heavyweight, highly complex, and requires high resources. |
+| **9** | **Object Lifecycle** | Developer manually creates/destroys logic objects. | Container silently manages the entire object lifecycle. |
+| **10** | **Protocols Used** | Uses JRMP (Java Remote Method Protocol). | Uses RMI-IIOP and advanced enterprise network protocols. |
+| **11** | **Application Size** | Ideal for small/medium internal network applications. | Ideal for large-scale robust systems (Banking, E-Commerce). |
+
+**Real-World Example:**
+
+*   **RMI Example (Simple System):** A basic local university network where an admin's computer sends a simple "fetch student marks" request directly to the main campus database server.
+*   **EJB Example (Enterprise System):** A global banking ATM network where millions of users withdraw money simultaneously, demanding strict security authorizations, multi-threaded server load balancing, and immediate transaction rollbacks if the network drops.
