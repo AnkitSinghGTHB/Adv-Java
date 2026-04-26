@@ -1,0 +1,106 @@
+1.​ Define a class and an object in Java. Explain how to create classes and objects with a suitable 
+example. Also discuss different types of access modifiers and their significance. 
+2.​ What is inheritance in Java? Explain its types with examples. Additionally, describe the concept 
+of packages and their benefits in Java programming. 
+3.​ Discuss the concept of multithreading in Java. Explain the thread life cycle and demonstrate how 
+to create a multithreaded program. Also explain object serialization with an example. 
+4.​ Develop a Java program where one thread produces data and another consumes it using some 
+methods. Include proper exception handling mechanisms. 
+5.​ Create a multithreaded Java program to illustrate thread synchronization. Ensure that exceptions 
+are handled gracefully. 
+6.​ Define an interface in Java. Create an interface Employee with methods calculateSalary() and 
+displayDetails(). Implement it in classes FullTimeEmployee and PartTimeEmployee. Write a 
+program to demonstrate the functionality and explain the execution. 
+7.​ Explain the concept of interfaces in Java. Design an interface Animal with methods sound() and 
+eat(). Implement this interface in classes Dog and Cat. Write a complete program and describe 
+how it works. 
+8.​ Write a Java program illustrating the scope and visibility of methods with different access 
+modifiers.  
+9.​ Write a Java program to test accessibility of class members using different access modifiers. 
+Include both variables and methods, and verify access rules across packages. Represent the 
+results in a comparative table. 
+10.​Define layout manager in Java. Explain any four types of layout managers and write example 
+programs to demonstrate their usage. 
+11.​Explain different layout managers used in Java AWT/Swing. Describe the working of any four 
+layout managers with sample code snippets. 
+12.​Develop a Java GUI program using JFC that accepts personal details (name, age, address) 
+through input fields. Implement a JavaBean to store the data and display it in a formatted 
+way when the user clicks a submit button. 
+13.​Explain the architecture and working of the Java Event Delegation Model with a diagram. 
+14.​Discuss different types of JavaBean properties (simple, indexed, bound, constrained). 
+15.​Compare AWT and Swing (JFC) components in terms of features and performance. 
+16.​Write a Java program to demonstrate event handling using ActionListener, MouseListener, or 
+KeyListener. 
+17.​List and explain different types of JDBC drivers used for RDBMS systems. 
+18.​Explain the java.sql API and its key interfaces such as Connection, Statement, and ResultSet. 
+19.​What is connection pooling? Explain its advantages and how it is implemented using the 
+javax.sql package. 
+20.​What is JDBC? Explain its role in connecting Java applications with relational databases. 
+21.​Write a Java program to perform Insert, Select, Update, and Delete operations on a database 
+table using JDBC. 
+22.​Write a Java program to demonstrate database connectivity and perform basic operations like 
+data insertion, retrieval, updation, and deletion. 
+23.​Create a Java application that performs CRUD operations using PreparedStatement 
+instead of Statement. 
+24.​In a product inventory system, a user wants to insert product details (Product ID, Name, Price, 
+Quantity) into a database. The program should accept multiple inputs and display all stored 
+records. Implement this using JDBC and explain the logic. 
+25.​Develop a Java Swing application using the MVC architecture to manage student details (add, 
+view, update). Clearly separate Model, View, and Controller components. 
+26.​Design a GUI-based calculator application using Swing and MVC pattern. Implement basic 
+arithmetic operations and explain the role of each component (Model, View, Controller). 
+27.​Develop a library management GUI application using Swing following the MVC design pattern. 
+Include functionalities like adding and viewing books. 
+28.​Write a Java program to implement a bank account management system using Swing and MVC 
+architecture. The application should support deposit and withdrawal operations with proper 
+separation of concerns. 
+29.​Develop a Java Swing application to simulate an online job application form where users can 
+select skills using checkboxes, choose job type using radio buttons, select location from a 
+dropdown list, set experience level using a slider, and display the submitted information. 
+30.​Create a Java Swing GUI for a survey form where users can select interests using checkboxes, 
+choose age group using radio buttons, select country from a combo box, rate satisfaction using a 
+slider, and view results upon submission. 
+31.​Design a Java Swing application for a feedback system where users can select services using 
+checkboxes, choose feedback type using radio buttons, select branch location from a dropdown, 
+rate services using a slider, and display the feedback summary. 
+32.​Develop a Swing-based notepad application featuring menus (File, Edit), a toolbar for quick 
+actions, and dialog boxes for opening, saving, and exiting the application. 
+33.​Provide a detailed comparison between AWT and Swing. Also, write short notes on five 
+components each (such as Button, Label, TextField, Frame for AWT and JButton, JLabel, 
+JTextField, JFrame, JTable for Swing) with examples. 
+34.​Write a Java program to implement a client-server communication system where the client sends 
+a message and the server responds with an acknowledgment. 
+35.​Create a Java program to implement a two-way communication between client and server using 
+sockets. 
+36.​Develop a Java socket program where the client sends a number to the server and the server 
+returns its square or factorial. 
+37.​Develop a Java socket program where multiple clients can connect to a server and exchange 
+messages. 
+38.​Write a Java program to demonstrate TCP-based client-server communication using sockets and 
+explain its working. 
+39.​Write a Java Applet to draw different geometric shapes such as square, ellipse, line, and polygon, 
+and display a message "Geometric Figures". Use appropriate coordinates. Also write the HTML 
+code to execute the applet. 
+40.​Develop a Java Applet that draws circle, rectangle, triangle, and arc with different colors and 
+displays a string "Drawing Shapes". Provide suitable coordinates and include the HTML code to 
+run the applet. 
+41.​Create a Java Applet program to draw multiple shapes like line, oval, rounded rectangle, and arc, 
+and display the text "Graphics Demo". Also write the corresponding HTML code to embed and 
+run the applet. 
+42.​What is the role of an EJB container? 
+43.​What is EJB (Enterprise JavaBeans)? Mention its purpose in enterprise applications. 
+44.​Write a Java EJB program to implement a stateful session bean that maintains user session data 
+(e.g., shopping cart items). 
+45.​Develop an EJB application for a banking system using a stateful session bean to handle deposit 
+and withdrawal operations. 
+46.​Write a Java program to demonstrate single inheritance where a class Student inherits properties 
+from a class Person. Display details of the student. 
+47.​Develop a Java program to demonstrate multilevel inheritance using classes Animal → Mammal 
+→ Dog. Implement methods to show characteristics at each level and explain the program 
+execution. 
+48.​Develop a Java program to handle multiple exceptions using multiple catch blocks. 
+49.​Discuss the differences between Socket programming, Remote Method Invocation (RMI), and 
+Servlet-based communication. Illustrate suitable scenarios where each technique is preferred. 
+50.​Compare Sockets, RMI, and Servlets in terms of architecture, performance, scalability, and ease 
+of development. Explain their use in real-world applications. 
+ 

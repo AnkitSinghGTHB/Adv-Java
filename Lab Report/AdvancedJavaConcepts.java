@@ -1,3 +1,4 @@
+
 // Package declaration removed — file is not inside a 'mypack' directory
 
 import java.io.*; // Importing IO classes for Serialization
