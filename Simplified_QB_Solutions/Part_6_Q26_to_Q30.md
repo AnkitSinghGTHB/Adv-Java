@@ -76,6 +76,13 @@ public class CalcApp {                          // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+GUI Calculator with two input fields,
+Add/Sub/Mul/Div buttons, and a result label.
+(Enter 10 and 3, click Add -> "Result: 13.0")
+```
+
 ---
 
 ## Question 27: Develop a library management GUI application using Swing following the MVC design pattern. Include functionalities like adding and viewing books.
@@ -150,6 +157,12 @@ public class LibApp {                           // Main execution class
         new LibController(v, m);                // Wire controller
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+GUI with book title text field and Add button.
+(Type "Java Basics" + click Add -> list shows "Java Basics")
 ```
 
 ---
@@ -230,6 +243,13 @@ public class BankApp {                          // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+GUI with amount field, Deposit/Withdraw buttons, balance label.
+(Enter 500, click Deposit -> "Bal: $500.0")
+(Enter 200, click Withdraw -> "Bal: $300.0")
+```
+
 ---
 
 ## Question 29: Develop a Java Swing application to simulate an online job application form where users can select skills using checkboxes, choose job type using radio buttons, select location from a dropdown list, set experience level using a slider, and display the submitted information.
@@ -296,6 +316,14 @@ public class JobForm {                          // Main class
         f.pack(); f.setVisible(true);           // Show
     }                                           //
 }                                               //
+```
+
+**Output (on clicking Submit with Java selected, Full-time, Delhi, Exp=5):**
+```
+Dialog: "Skills: Java
+Type: Full
+City: Delhi
+Exp: 5"
 ```
 
 ---
@@ -365,4 +393,12 @@ public class SurveyForm {                       // Main class
         f.setSize(300, 300); f.setVisible(true);// Display GUI
     }                                           //
 }                                               //
+```
+
+**Output (on clicking Submit with Tech checked, 26+, USA, Rating=4):**
+```
+Dialog: "Interests: Tech
+Age: 26+
+Country: USA
+Rating: 4"
 ```

@@ -64,6 +64,13 @@ public class NegativeDemo {                     // Main class
 }                                               //
 ```
 
+**Output (entering -5):**
+```
+Enter a number: -5
+Negative numbers are not allowed: -5
+Program continues...
+```
+
 ---
 
 ## Question 47: Discuss the hierarchy of exception classes in Java and explain the difference between checked and unchecked exceptions.
@@ -118,6 +125,11 @@ public class HierarchyDemo {                    // Main class
         // Example: public void loop(){ loop(); } // Causes StackOverflowError
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Checked Exception: File not found.
 ```
 
 ---
@@ -180,6 +192,14 @@ public class FinallyDemo {                      // Main class
 }                                               //
 ```
 
+**Output:**
+```
+Try Block started.
+Finally Block executed.
+Scanner closed cleanly.
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+```
+
 ---
 
 ## Question 49: Write a Java program that demonstrates the use of `throw` and `throws` keywords in handling exceptions.
@@ -234,6 +254,11 @@ public class KeywordDemo {                      // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Error Caught: Access Denied: Under 18
 ```
 
 ---
@@ -296,4 +321,10 @@ public class TryCatchDemo {                     // Main class
         System.out.println("Program gracefully continues."); // Post-recovery
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Caught Array Bounds Error!
+Program gracefully continues.
 ```

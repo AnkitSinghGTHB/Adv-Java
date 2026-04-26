@@ -64,6 +64,11 @@ public class CrudDemo {                         // Main class
 }                                               //
 ```
 
+**Output:**
+```
+ID: 1, Name: Jane
+```
+
 ---
 
 ## Question 22: Write a Java program to demonstrate database connectivity and perform basic operations like data insertion, retrieval, updation, and deletion.
@@ -123,6 +128,13 @@ public class DBConnectDemo {                    // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Inserted: (101, Alice)
+After Update: Bob
+Record 102 deleted.
 ```
 
 ---
@@ -192,6 +204,14 @@ public class PrepDemo {                         // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Inserted 101
+Updated 101
+Found: UpdatedValue
+Deleted 101
 ```
 
 ---
@@ -266,6 +286,18 @@ public class Inventory {                        // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output (sample interaction):**
+```
+Product ID: 1
+Name: Laptop
+Price: 999.99
+Quantity: 5
+Add another? (Y/N): N
+
+--- Inventory List ---
+ID:1 | Laptop | $999.99 | Qty:5
 ```
 
 ---
@@ -347,4 +379,11 @@ public class MVCApp {                           // Main execution class
         new StudentController(view, list);      // Wire controller
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+GUI Window with Name text field, Add button,
+and text area displaying added student names.
+(Type "John" + click Add -> "John" appears in text area)
 ```

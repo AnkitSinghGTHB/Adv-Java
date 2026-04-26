@@ -65,6 +65,12 @@ public class InputValidation {                  // Main class
 }                                               //
 ```
 
+**Output (if Name left blank):**
+```
+Enter Name: 
+Error: Name cannot be empty!
+```
+
 ---
 
 ## Question 42: Write a Java program to handle multiple exceptions using multi-catch block.
@@ -119,6 +125,13 @@ public class MultiCatchDemo {                   // Main class
         System.out.println("Program continues normally."); // Proof of recovery
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Exception Caught: java.lang.ArrayIndexOutOfBoundsException
+Details: Index 10 out of bounds for length 5
+Program continues normally.
 ```
 
 ---
@@ -178,6 +191,11 @@ public class OverrideDemo {                     // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Child Processing.
 ```
 
 ---
@@ -243,6 +261,12 @@ public class LifeCycle extends Applet {         // Extend Applet
 }                                               //
 ```
 
+**Output (in Applet Viewer):**
+```
+Displays: "init() -> start() -> paint()"
+         "Welcome to Applet Lifecycle"
+```
+
 ---
 
 ## Question 45: Develop a Java program to read data from a file and write it to another file, handling file-related exceptions properly.
@@ -300,4 +324,11 @@ public class FileCopier {                       // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output (with input.txt containing "Hello\nWorld"):**
+```
+Copying file...
+Copy successful!
+(output.txt now contains "Hello\nWorld")
 ```

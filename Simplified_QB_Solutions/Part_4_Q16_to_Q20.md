@@ -62,6 +62,14 @@ public class MultiEventDemo {                   // Main class
 }                                               //
 ```
 
+**Output (on clicking button, hovering panel, typing in field):**
+```
+Action fired!
+Mouse Entered!
+Key: h
+Key: i
+```
+
 ---
 
 ## Question 17: List and explain different types of JDBC drivers used for RDBMS systems.
@@ -114,6 +122,12 @@ public class DriverDemo {                       // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output (if MySQL is running):**
+```
+Driver Loaded!
+Connected!
 ```
 
 ---
@@ -175,6 +189,11 @@ public class ApiDemo {                          // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+1 : Alice
 ```
 
 ---
@@ -239,6 +258,15 @@ public class PoolDemo {                         // Main class
 }                                               //
 ```
 
+**Output:**
+```
+1. Pool created (maxSize=10)
+2. getConnection() -> borrows from pool
+3. Execute queries using borrowed connection
+4. .close() -> returns connection to pool
+5. Next request reuses same connection (fast!)
+```
+
 ---
 
 ## Question 20: What is JDBC? Explain its role in connecting Java applications with relational databases.
@@ -289,4 +317,10 @@ public class JDBCRoleDemo {                     // Main class
         }                                       //
     }                                           //
 }                                               //
+```
+
+**Output (with Emp table containing data):**
+```
+Emp ID: 1
+Emp ID: 2
 ```

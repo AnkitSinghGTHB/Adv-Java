@@ -55,6 +55,11 @@ public class Main {                             // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+Speed: 100
+```
+
 ---
 
 ## Question 2: What is inheritance in Java? Explain its types with examples. Additionally, describe the concept of packages and their benefits in Java programming.
@@ -106,6 +111,12 @@ public class Main {                             // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+Eating...
+Barking...
+```
+
 ---
 
 ## Question 3: Discuss the concept of multithreading in Java. Explain the thread life cycle and demonstrate how to create a multithreaded program. Also explain object serialization with an example.
@@ -153,62 +164,106 @@ public class Main {                             // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+Thread Runs
+```
+
 ---
 
 ## Question 4: Develop a Java program where one thread produces data and another consumes it using some methods. Include proper exception handling mechanisms.
 
-**Topic Introduction: Inter-thread Communication (Producer-Consumer).**
+**Brief Explanation:**
 
-1. **Topic Introduction**: The Producer-Consumer problem is a classic synchronization scenario where two threads share a common, fixed-size buffer or queue.
-2. **The Producer**: The producer thread's role is to generate data and place it into the shared buffer continuously at a specific rate.
-3. **The Consumer**: The consumer thread's role is to remove and process data from the shared buffer continuously at its own processing rate.
-4. **The Core Problem**: A critical issue arises if the producer tries to add data when the buffer is full, or the consumer tries to remove data when it is empty.
-5. **Thread Communication**: Java resolves this using inter-thread communication methods provided by the `Object` class: `wait()`, `notify()`, and `notifyAll()`.
-6. **The wait() Method**: When called, `wait()` immediately releases the lock on the shared object and puts the thread into a waiting state until notified.
-7. **The notify() Method**: When called, `notify()` wakes up a single arbitrary thread that is waiting on the object's monitor, allowing it to resume execution.
-8. **Handling Full Buffer**: If the buffer is full, the producer thread invokes `wait()`, pausing its operation until the consumer removes an item.
-9. **Handling Empty Buffer**: If the buffer is empty, the consumer thread invokes `wait()`, pausing its operation until the producer adds a new item.
-10. **Synchronized Block**: All inter-thread communication (`wait`/`notify`) must occur strictly within a `synchronized` block or method to guarantee mutual exclusion.
-11. **Exception Handling**: The `wait()` and `sleep()` methods explicitly throw `InterruptedException`, forcing the developer to handle thread interruptions gracefully.
-12. **Program Logic**: A simple boolean flag (`hasData`) can effectively track whether the shared buffer is currently empty or contains an unconsumed item.
+- Producer-Consumer uses `wait()` and `notify()` for inter-thread communication on a shared buffer.
+- `wait()` releases the lock and pauses the thread; `notify()` wakes a waiting thread.
+- A `synchronized` method ensures only one thread accesses the shared data at a time.
+- A boolean flag (`hasData`) tracks whether buffer is full or empty.
 
 ```text
-  [PRODUCER] ---> ( Puts Item ) ---> [SHARED BUFFER]
-                                            |
-  [CONSUMER] <--- ( Gets Item ) <-----------+
-  
-  Condition: Wait if Full (Producer) | Wait if Empty (Consumer)
+  [PRODUCER Thread]                [CONSUMER Thread]
+       |                                |
+  produce(data)                    consume()
+       |                                |
+  if(hasData) wait()              if(!hasData) wait()
+       |                                |
+  data = d; notify()              read data; notify()
+       |                                |
+       +---- [SHARED BUFFER] ----------+
+              (synchronized)
 ```
 
 ```java
-// Explanation: Producer Consumer Problem       //
+// Explanation: Producer Consumer Program       //
 class SharedData {                              // Shared resource class
-    private int data;                           // Variable to store data
-    private boolean hasData = false;            // Flag indicating data state
-    
-    public synchronized void produce(int d) {   // Synchronized producer method
-        try {                                   // Exception handling start
-            while (hasData) wait();             // Wait if data is not consumed
-            data = d;                           // Put new data in buffer
-            System.out.println("Produced: "+d); // Print produced item
-            hasData = true;                     // Update flag state
-            notify();                           // Wake up consumer thread
-        } catch (InterruptedException e) {      // Catch thread interrupt
-            System.out.println("Interrupted");  // Error message
+    private int data;                           // Buffer variable
+    private boolean hasData = false;            // Flag: is buffer full?
+                                                //
+    public synchronized void produce(int d) {   // Synchronized producer
+        try {                                   //
+            while (hasData) wait();             // Wait if data exists
+            data = d;                           // Store new data
+            System.out.println("Produced: "+d); // Log output
+            hasData = true;                     // Mark buffer as full
+            notify();                           // Wake consumer
+        } catch (InterruptedException e) {      // Handle interrupt
+            e.printStackTrace();                // Print error
         }                                       //
     }                                           //
                                                 //
-    public synchronized void consume() {        // Synchronized consumer method
-        try {                                   // Exception handling start
-            while (!hasData) wait();            // Wait if buffer is empty
-            System.out.println("Consumed: "+data);// Print consumed item
-            hasData = false;                    // Update flag state
-            notify();                           // Wake up producer thread
-        } catch (InterruptedException e) {      // Catch thread interrupt
-            System.out.println("Interrupted");  // Error message
+    public synchronized void consume() {        // Synchronized consumer
+        try {                                   //
+            while (!hasData) wait();            // Wait if buffer empty
+            System.out.println("Consumed: "+data);// Log output
+            hasData = false;                    // Mark buffer as empty
+            notify();                           // Wake producer
+        } catch (InterruptedException e) {      // Handle interrupt
+            e.printStackTrace();                // Print error
         }                                       //
     }                                           //
 }                                               //
+                                                //
+class Producer extends Thread {                 // Producer thread class
+    SharedData sd;                              // Reference to shared data
+    Producer(SharedData sd) { this.sd = sd; }   // Constructor
+    public void run() {                         // Thread task
+        for (int i = 1; i <= 5; i++)            // Produce 5 items
+            sd.produce(i);                      // Call produce method
+    }                                           //
+}                                               //
+                                                //
+class Consumer extends Thread {                 // Consumer thread class
+    SharedData sd;                              // Reference to shared data
+    Consumer(SharedData sd) { this.sd = sd; }   // Constructor
+    public void run() {                         // Thread task
+        for (int i = 1; i <= 5; i++)            // Consume 5 items
+            sd.consume();                       // Call consume method
+    }                                           //
+}                                               //
+                                                //
+public class ProducerConsumerDemo {             // Main class
+    public static void main(String[] args) {    // Program entry point
+        SharedData sd = new SharedData();       // Create shared resource
+        Producer p = new Producer(sd);          // Create producer thread
+        Consumer c = new Consumer(sd);          // Create consumer thread
+        p.start();                              // Start producer
+        c.start();                              // Start consumer
+    }                                           //
+}                                               //
+```
+
+**Output:**
+```
+Produced: 1
+Consumed: 1
+Produced: 2
+Consumed: 2
+Produced: 3
+Consumed: 3
+Produced: 4
+Consumed: 4
+Produced: 5
+Consumed: 5
 ```
 
 ---
@@ -272,4 +327,14 @@ public class SyncDemo {                         // Main execution class
         t2.start();                             // Start Thread 2
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Count: 1
+Count: 2
+Count: 3
+Count: 4
+Count: 5
+Count: 6
 ```

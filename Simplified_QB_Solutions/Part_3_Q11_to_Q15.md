@@ -54,6 +54,12 @@ public class Layouts {                          // Main class
 }                                               //
 ```
 
+**Output:**
+```
+GUI Window with "Flow Top" label at top,
+"Grid Left" and "Grid Right" buttons in center.
+```
+
 ---
 
 ## Question 12: Develop a Java GUI program using JFC that accepts personal details (name, age, address) through input fields. Implement a JavaBean to store the data and display it in a formatted way when the user clicks a submit button.
@@ -126,6 +132,13 @@ public class FormApp {                          // Main GUI Application
 }                                               //
 ```
 
+**Output (on clicking Submit with Name=John, Age=20, Addr=Delhi):**
+```
+Dialog Box: "Name: John
+Age: 20
+Addr: Delhi"
+```
+
 ---
 
 ## Question 13: Explain the architecture and working of the Java Event Delegation Model with a diagram.
@@ -189,6 +202,11 @@ public class EventDemo {                        // Main class
 }                                               //
 ```
 
+**Output (on clicking the button):**
+```
+Button clicked!
+```
+
 ---
 
 ## Question 14: Discuss different types of JavaBean properties (simple, indexed, bound, constrained).
@@ -248,6 +266,8 @@ class AdvancedBean {                            // Bean class
 }                                               //
 ```
 
+*(No standalone output — this is a data class. Use getters/setters to test.)*
+
 ---
 
 ## Question 15: Compare AWT and Swing (JFC) components in terms of features and performance.
@@ -302,4 +322,11 @@ public class ComparisonDemo {                   // Main class
         swingFrame.setVisible(true);            // Display (Java renders)
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Two windows appear side-by-side:
+- AWT window with native OS-styled button
+- Swing window with Java-rendered button
 ```

@@ -67,6 +67,9 @@ class MathClient {                              // Client Class
 }                                               //
 ```
 
+**Output (Server):** `Received: 5 -> Square = 25`
+**Output (Client):** `Server: Square is: 25`
+
 ---
 
 ## Question 37: Develop a Java socket program where multiple clients can connect to a server and exchange messages.
@@ -134,65 +137,100 @@ class Handler implements Runnable {             // Thread Logic
 }                                               //
 ```
 
+**Output (Server):**
+```
+Server Started...
+Client joined!
+Client joined!
+Rcv: Hello from Client1
+```
+
 ---
 
 ## Question 38: Write a Java program to demonstrate TCP-based client-server communication using sockets and explain its working.
 
-**Topic Introduction: TCP-based Client-Server Working Principles.**
+**Brief Explanation:**
 
-1. **Topic Introduction**: Transmission Control Protocol (TCP) is a connection-oriented, reliable protocol that guarantees the exact delivery and ordering of data packets across networks.
-2. **Connection-Oriented**: Unlike UDP (User Datagram Protocol), TCP requires establishing a dedicated, virtual connection before any actual data is transmitted.
-3. **Three-Way Handshake**: 1) Client sends SYN (Synchronize). 2) Server replies with SYN-ACK. 3) Client replies with ACK (Acknowledge). The socket is now officially open.
-4. **Reliability Mechanism**: Every byte sent via TCP is numbered. The receiver must send an acknowledgment back. If an acknowledgment is missing, the sender retransmits the data automatically.
-5. **Packet Ordering**: Network packets often arrive out of order. TCP strictly reassembles them into the correct sequence before handing them to the Java `InputStream`.
-6. **Congestion Control**: TCP dynamically adjusts the transmission speed based on network traffic to prevent overwhelming the receiver or the routers in between.
-7. **Java Abstraction**: The `java.net.Socket` class abstracts away all the massive complexity of handshakes, acknowledgments, and reassembly, providing simple read/write streams.
-8. **Stream Paradigm**: Data is treated as a continuous stream of bytes. There are no message boundaries; `read()` simply pulls whatever bytes are currently in the local OS buffer.
-9. **Port Concept**: A port (1-65535) acts like a specific door on a computer. TCP uses the IP address to find the computer, and the Port to find the specific Java application.
-10. **Blocking Nature**: Standard Java TCP sockets are "blocking." If you call `read()` and no data has arrived over the network yet, the thread freezes completely until data appears.
-11. **Teardown Process**: Closing the socket initiates a 4-way FIN/ACK teardown handshake, ensuring both sides safely flush their buffers before the connection is destroyed.
-12. **Use Cases**: TCP is mandatory for File Transfers, Web Browsing (HTTP), Database connections, and chat applications—anywhere data loss is unacceptable.
+- TCP is connection-oriented and reliable — guarantees data delivery and ordering.
+- Java's `Socket` and `ServerSocket` abstract the TCP handshake, retransmission, and packet ordering.
+- Server listens on a port, client connects, both exchange data via Input/Output streams.
 
 ```text
-  [TCP Reliability Architecture]
-  Sender: "HELLO" -> (H)(E)(L)(L)(O) packets sent
-                               | Network Delay/Loss
-  Receiver gets: (E)(L)(O)
-  Receiver requests: Missing (H) and (L)
-  Sender retransmits: (H) and (L)
-  Receiver reconstructs: "HELLO" -> Java InputStream
+  [TCP Communication Flow]
+  CLIENT                         SERVER
+    |                               |
+    +--- SYN (Connect) ----------->|  (3-way handshake)
+    |<-- SYN-ACK ----------------  |
+    +--- ACK -------------------->  |
+    |                               |
+    +--- writeUTF("Hello") ------->|  (Reliable delivery)
+    |<-- writeUTF("ACK") ---------  |
+    |                               |
+    +--- FIN (Close) ------------->|  (Graceful teardown)
 ```
 
 ```java
-// Explanation: TCP Abstraction in Java         //
-import java.io.*; import java.net.*;            // Network imports
+// Explanation: TCP Server-Client Demo          //
+import java.io.*; import java.net.*;            // Network & IO imports
                                                 //
-class TCPDemo {                                 // Main class
-    public static void main(String[] args) {    // Program entry
-        // The extreme complexity of TCP handshakes, error checking,
-        // and retransmission are hidden entirely behind this line:
-        try (Socket s = new Socket("example.com", 80)) {
+// ===== RUN THIS CLASS FIRST =====             //
+class TCPServer {                               // Server Application
+    public static void main(String[] args) throws Exception {
+        ServerSocket ss = new ServerSocket(6000);// Listen on port 6000
+        System.out.println("Server waiting...");// Status log
+        Socket s = ss.accept();                 // Block until client connects
+        System.out.println("Client connected!");// Connection confirmed
                                                 //
-            // We treat the reliable network connection exactly
-            // like writing to a local text file:
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(
-                new InputStreamReader(s.getInputStream()));
+        DataInputStream din = new DataInputStream(s.getInputStream());
+        DataOutputStream dout = new DataOutputStream(s.getOutputStream());
                                                 //
-            // Send HTTP GET Request over TCP   //
-            out.println("GET / HTTP/1.1");      // Send Request
-            out.println("Host: example.com");   // Send Header
-            out.println("");                    // Send Blank Line
+        String msg = din.readUTF();             // Read client's message
+        System.out.println("Received: " + msg); // Print it
                                                 //
-            // Read TCP Response reliably       //
-            String response = in.readLine();    // Read first line
-            System.out.println("TCP Reply: " + response);
+        dout.writeUTF("Server ACK: " + msg);    // Send acknowledgment
+        dout.flush();                           // Push data over network
                                                 //
-        } catch (IOException e) {               // Handle TCP failures
-            System.out.println("Network Error");// (e.g., Timeout)
-        }                                       //
+        s.close(); ss.close();                  // Release resources
+        System.out.println("Server closed.");   // Status log
     }                                           //
 }                                               //
+                                                //
+// ===== RUN THIS CLASS SECOND =====            //
+class TCPClient {                               // Client Application
+    public static void main(String[] args) throws Exception {
+        Socket s = new Socket("localhost", 6000);// Connect to server
+        System.out.println("Connected to server!");// Status log
+                                                //
+        DataOutputStream dout = new DataOutputStream(s.getOutputStream());
+        DataInputStream din = new DataInputStream(s.getInputStream());
+                                                //
+        dout.writeUTF("Hello via TCP!");        // Send message
+        dout.flush();                           // Push data
+        System.out.println("Sent: Hello via TCP!");// Log
+                                                //
+        String reply = din.readUTF();           // Read server's reply
+        System.out.println("Reply: " + reply);  // Print reply
+                                                //
+        s.close();                              // Release resources
+        System.out.println("Client closed.");   // Status log
+    }                                           //
+}                                               //
+```
+
+**Output (Server Console):**
+```
+Server waiting...
+Client connected!
+Received: Hello via TCP!
+Server closed.
+```
+
+**Output (Client Console):**
+```
+Connected to server!
+Sent: Hello via TCP!
+Reply: Server ACK: Hello via TCP!
+Client closed.
 ```
 
 ---
@@ -257,6 +295,12 @@ public class ShapesApplet extends Applet {      // Extend Applet class
 }                                               //
 ```
 
+**Output (in Applet Viewer):**
+```
+Draws: "Geometric Figures" text, a square,
+an ellipse, a diagonal line, and a triangle.
+```
+
 ---
 
 ## Question 40: Develop a Java Applet that draws circle, rectangle, triangle, and arc with different colors and displays a string "Drawing Shapes". Provide suitable coordinates and include the HTML code to run the applet.
@@ -319,4 +363,10 @@ public class ColorShapes extends Applet {       // Class declaration
         g.drawArc(200, 150, 80, 80, 0, 180);    // Sweeps 180 deg
     }                                           //
 }                                               //
+```
+
+**Output (in Applet Viewer):**
+```
+Draws: "Drawing Shapes" text in black,
+blue circle, green rectangle, orange triangle, magenta arc.
 ```

@@ -67,6 +67,14 @@ public class EmployeeDemo {                     // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+Type: Full-Time
+Salary: $5000/mo
+Type: Part-Time
+Salary: $20/hr
+```
+
 ---
 
 ## Question 7: Explain the concept of interfaces in Java. Design an interface Animal with methods sound() and eat(). Implement this interface in classes Dog and Cat. Write a complete program and describe how it works.
@@ -135,24 +143,23 @@ public class AnimalDemo {                       // Main execution class
 }                                               //
 ```
 
+**Output:**
+```
+Dog says Woof
+Dog eats bones
+Cat says Meow
+Cat eats fish
+```
+
 ---
 
 ## Question 8: Write a Java program illustrating the scope and visibility of methods with different access modifiers.
 
-**Topic Introduction: Scope and Visibility of Methods with Access Modifiers.**
+**Brief Explanation:**
 
-1. **Introduction to Scope**: Scope refers to the specific region or block of code within a program where a variable or method is recognized and can be legally accessed.
-2. **Introduction to Visibility**: Visibility, managed by access modifiers, determines which other classes or packages are allowed to invoke a specific method or read a variable.
-3. **The Four Modifiers**: Java provides exactly four levels of access control: `private`, default (no keyword), `protected`, and `public`.
-4. **Private Methods**: A `private` method is the most restrictive; it is visible only within the exact class where it is declared and is completely hidden from subclasses and external classes.
-5. **Default Methods**: If no modifier is specified, the method has package-private visibility, meaning it can be called freely by any class residing in the same package.
-6. **Protected Methods**: A `protected` method is visible to all classes within the same package, and crucially, to any subclass (even if the subclass is in a completely different package).
-7. **Public Methods**: A `public` method is the least restrictive; it is universally visible and can be invoked from any class, anywhere in the application.
-8. **Encapsulation Role**: Properly configuring method visibility is the cornerstone of encapsulation, allowing developers to expose a clean public API while hiding complex internal mechanics.
-9. **Method Overriding Rule**: When overriding a method in a subclass, the visibility of the new method cannot be more restrictive than the original method in the parent class.
-10. **Information Hiding**: Making helper or utility methods `private` prevents other programmers from accidentally calling internal logic that might disrupt the object's state.
-11. **Program Structure**: An illustrative program involves a main class declaring four distinct methods, each utilizing a different access modifier to demonstrate its specific visibility scope.
-12. **Demonstration**: By attempting to call these methods from another class, the compiler will enforce the rules, successfully compiling public calls and throwing errors for private ones.
+- Java has 4 access modifiers: `public`, `protected`, `default` (no keyword), and `private`.
+- Each modifier controls which classes can call a method or access a variable.
+- `private` = same class only; `default` = same package; `protected` = same package + subclasses; `public` = everywhere.
 
 ```text
   Visibility Summary:
@@ -185,26 +192,36 @@ class AccessDemo {                              // Class containing methods
         priMethod();                            // Private method called inside
     }                                           //
 }                                               //
+                                                //
+public class AccessTest {                       // Main execution class
+    public static void main(String[] args) {    // Program entry point
+        AccessDemo obj = new AccessDemo();      // Create object
+        obj.pubMethod();                        // OK: public access
+        obj.proMethod();                        // OK: same package
+        obj.defMethod();                        // OK: same package
+        // obj.priMethod();                     // ERROR: private access
+        obj.testPrivate();                      // OK: calls private internally
+    }                                           //
+}                                               //
+```
+
+**Output:**
+```
+Public visible
+Protected visible
+Default visible
+Private hidden
 ```
 
 ---
 
 ## Question 9: Write a Java program to test accessibility of class members using different access modifiers. Include both variables and methods, and verify access rules across packages. Represent the results in a comparative table.
 
-**Topic Introduction: Accessibility of Class Members Across Packages.**
+**Brief Explanation:**
 
-1. **Topic Introduction**: Testing class member accessibility requires setting up classes in different packages to observe how modifiers behave across strict package boundaries.
-2. **Package Boundaries**: Packages act as protective walls in Java; classes outside these walls have restricted access to the internal components based on their modifiers.
-3. **Setting Up the Test**: To verify rules, we create `Package1.ClassA` defining variables and methods with all four modifiers, and `Package2.ClassB` attempting to access them.
-4. **Public Accessibility**: Members declared `public` in `ClassA` are fully accessible in `ClassB` without any restriction, provided `ClassA` itself is public.
-5. **Private Inaccessibility**: Members declared `private` in `ClassA` throw immediate compile-time errors when `ClassB` attempts to access them.
-6. **Default Inaccessibility**: Members with default access in `ClassA` are strictly confined to `Package1` and cannot be accessed by `ClassB` in `Package2`.
-7. **Protected via Inheritance**: If `ClassB` extends `ClassA`, it can access the `protected` members of `ClassA` through inheritance, despite being in a different package.
-8. **Protected via Instance**: However, if `ClassB` does not extend `ClassA`, attempting to access `protected` members via an object instance of `ClassA` will fail.
-9. **Variables vs. Methods**: The exact same access rules apply consistently to both member variables (fields) and member methods within a class.
-10. **The Import Statement**: To even attempt access across packages, the external class must use the `import` statement to make the target class visible to the compiler.
-11. **Verification Logic**: The program verifies these rules by generating compiler errors on invalid access attempts, proving the strict enforcement of Java's security model.
-12. **Comparative Result**: A comparative table clearly illustrates which modifiers allow access based on the specific location of the caller relative to the target member.
+- This program tests how access modifiers behave across package boundaries.
+- `public` and `protected` (via inheritance) are accessible across packages.
+- `default` and `private` members cannot be accessed from a different package.
 
 ```text
   [PACKAGE 1]                  [PACKAGE 2]
@@ -218,25 +235,47 @@ class AccessDemo {                              // Class containing methods
 ```
 
 ```java
-// Explanation: Accessibility Across Packages   //
+// ===== FILE 1: pack1/A.java =====             //
 package pack1;                                  // Package 1 declaration
 public class A {                                // Public class A
     public int pub = 1;                         // Public variable
     protected int pro = 2;                      // Protected variable
     int def = 3;                                // Default variable
     private int pri = 4;                        // Private variable
-}                                               //
                                                 //
-package pack2;                                  // Package 2 declaration
-import pack1.A;                                 // Importing class A
-public class B extends A {                      // Class B inherits A
-    public void testAccess() {                  // Testing access rules
-        System.out.println(pub);                // Allowed: Public access
-        System.out.println(pro);                // Allowed: Protected via child
-        // System.out.println(def);             // Error: Default not allowed
-        // System.out.println(pri);             // Error: Private not allowed
+    public void pubMethod() {                   // Public method
+        System.out.println("Public method");    //
+    }                                           //
+    private void priMethod() {                  // Private method
+        System.out.println("Private method");   //
     }                                           //
 }                                               //
+                                                //
+// ===== FILE 2: pack2/B.java =====             //
+package pack2;                                  // Package 2 declaration
+import pack1.A;                                 // Import class A
+public class B extends A {                      // Inherits A (cross-package)
+    public void testAccess() {                  // Method to test rules
+        System.out.println("pub = " + pub);     // OK: public
+        System.out.println("pro = " + pro);     // OK: protected via child
+        // System.out.println(def);             // ERROR: default denied
+        // System.out.println(pri);             // ERROR: private denied
+        pubMethod();                            // OK: public method
+        // priMethod();                         // ERROR: private method
+    }                                           //
+                                                //
+    public static void main(String[] args) {    // Program entry point
+        B obj = new B();                        // Create object of B
+        obj.testAccess();                       // Run access test
+    }                                           //
+}                                               //
+```
+
+**Output:**
+```
+pub = 1
+pro = 2
+Public method
 ```
 
 ---
@@ -293,4 +332,10 @@ public class LayoutDemo {                       // Main class declaration
         f.setVisible(true);                     // Make window visible
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+GUI Window appears with "North" button at top,
+"Grid 1" and "Grid 2" buttons side-by-side in center.
 ```

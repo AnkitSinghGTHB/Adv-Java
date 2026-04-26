@@ -71,6 +71,14 @@ public class FeedbackApp {                      // Main class
 }                                               //
 ```
 
+**Output (on clicking Submit with Dining+Spa, Complaint, NYC, Rating=8):**
+```
+Dialog: "Services: Dining Spa
+Type: Complaint
+Branch: NYC
+Rating: 8"
+```
+
 ---
 
 ## Question 32: Develop a Swing-based notepad application featuring menus (File, Edit), a toolbar for quick actions, and dialog boxes for opening, saving, and exiting the application.
@@ -148,6 +156,13 @@ public class SimpleNotepad {                    // Main class
 }                                               //
 ```
 
+**Output:**
+```
+Notepad window with File menu (Open/Exit),
+and a scrollable text editing area.
+(Click Open -> File chooser dialog appears)
+```
+
 ---
 
 ## Question 33: Provide a detailed comparison between AWT and Swing. Also, write short notes on five components each (such as Button, Label, TextField, Frame for AWT and JButton, JLabel, JTextField, JFrame, JTable for Swing) with examples.
@@ -214,6 +229,12 @@ public class ComponentComparison {              // Main class
         sFrame.setVisible(true);                // Display
     }                                           //
 }                                               //
+```
+
+**Output:**
+```
+Two windows: one with native OS buttons (AWT),
+one with Java-rendered buttons (Swing).
 ```
 
 ---
@@ -287,6 +308,9 @@ class Client {                                  // Client Application
     }                                           //
 }                                               //
 ```
+
+**Output (Server):** `Client says: Hello Server!`
+**Output (Client):** `Server ACK: Message Received`
 
 ---
 
@@ -369,3 +393,6 @@ class ChatClient {                              // Client App
     }                                           //
 }                                               //
 ```
+
+**Output (Server):** `Client: Hello` → types reply
+**Output (Client):** Types "Hello" → sees `Server: Hi back`
